@@ -1,0 +1,254 @@
+/*  Variables  */
+$primary-font: 'Poppins', sans-serif;
+
+/*  Mixins */
+@mixin section-wrapper {
+  width: 90%;
+  margin: 0 auto;
+}
+
+@mixin section-padding {
+  padding: 4rem 0;
+}
+
+/*  General  */
+* { 
+  -moz-box-sizing: border-box; 
+  -webkit-box-sizing: border-box; 
+  box-sizing: border-box; 
+}
+
+body, h1, h2, h3, h4 {
+  margin: 0;
+}
+body {
+  font-size: 62.5%;
+  font-family: $primary-font;
+}
+
+h1 {
+  font-size: 8.4rem;
+}
+
+h2 {
+    font-size: 6.4rem; 
+}
+
+h3 {
+  font-size: 3.6rem;
+}
+
+h4 {
+  font-size: 2.4rem;
+}
+p {
+  font-size: 2.0rem;
+}
+
+/*   SHOWS PAGE  */
+
+/*  Hero Background  */
+.hero {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url("../assets/Images/homepage-background.jpg");
+  background-size: cover;
+  min-height: 100vh;
+}
+
+/*   Nav Bar  */
+.hero-header {
+  min-height: 8vh;
+  @include section-wrapper;
+  @include section-padding;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.hero-header--left, .hero-header--right,  {
+  display: flex;
+  align-items: center;
+  a {
+    padding: 0 1rem;
+
+    font-size: 1.8rem;
+    text-decoration: none;
+    color: #d7d7d7;
+  }
+    &:hover {
+      color: #fff;
+    }
+}
+
+.hero-header--left a {
+  color: #fff;
+}
+
+.hero-header--right .clicked {
+  color: #fff;
+}
+
+/*  Shows Table  */
+.shows {
+  @include section-wrapper; 
+  @include section-padding;
+  .shows__title {
+    color: #fff;
+  }
+}
+.shows-content-wrapper {
+  padding-top: 2rem;
+  .shows-container-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      width: 30%;
+    }
+    .shows-container-item__date {
+      color: #fff;
+      font-size: 1.8rem;
+    }
+    .shows-container-item__place {
+      display: block;
+      color: #D7D7D7; 
+      font-size: 1.8rem;
+    }
+    .shows-container-item__location {
+      color: #D7D7D7;
+      width: 30%;
+      font-size: 1.8rem;
+    }
+    .shows-container-item__btn {
+      width: 19.8rem;
+      height: 5.5rem;
+      padding: 1.5rem 3.5rem;
+      background-color: rgba(255, 255, 255, 0.4);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.8rem;
+      border-color: #fff;
+      border-radius: 4px;
+    }
+  }
+}
+
+hr:last-of-type {
+  display: none;
+}
+
+/*  CONTACT PAGE  */
+#contact {
+  background-color: #272727;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  @include section-wrapper; 
+  @include section-padding;
+  color: #fff;
+  .contact-container {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    word-wrap: break-word;
+    .contact-container__box {
+      width: 30%;
+    }
+    .contact-container__box-title {
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    .contact-container__box-content {
+      color: #D7D7D7;
+      p {
+        margin: 0;
+        font-size: 1.8rem;
+      }
+    }
+  }
+  .contact-icon-bar {
+    width: 25%;
+    margin: 4rem 0;
+    display: flex;
+    justify-content: space-between;
+    .contact-icon-bar__item {
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.footer {
+  font-size: 1rem;
+  color: #D7D7D7;
+  margin-top: 5rem;
+}
+
+/*  MEDIA QUERIES  */
+
+@media (max-width: 768px) {
+  .hero {
+    min-height: 40vh;
+  }
+  .hero-header, .hero-header--left, .hero-header--right  {
+    flex-direction: column;
+    align-items: center;
+  }
+  .hero-header--left > a, .hero-header--right > a {
+    width: 100vw;
+    font-size: 1.8*0.5 + rem;
+    text-align: center;
+  }
+  .shows-content-wrapper {
+    .shows-container-item {
+      div {
+        .shows-container-item__date {
+          font-size: 1.8*0.5 + rem;
+        }
+        .shows-container-item__place {
+          font-size: 1.8*0.5 + rem;
+        }
+      }
+      .shows-container-item-location {
+        font-size: 1.8*0.5 + rem;
+      }
+      .shows-container-item__btn {
+        width: 19.8*0.5 + rem;
+        height: 5.5*0.5 + rem;
+        padding: 1.5*0.5 + rem 3*0.5 + rem;
+        font-size: 1.8*0.5 + rem;
+      }
+    }
+  }
+
+  .contact__title {
+    font-size: 6.4*0.8 + rem;
+  }
+  .contact-container {
+    .contact-container__box {
+      .contact-container__box-title {
+        font-size: 1.8*0.8 + rem;
+      }
+      .contact-container__box-content p {
+        font-size: 1.8*0.8 + rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 1092px) {
+  .contact__title {
+    font-size: 6.4*0.8 + rem;
+  }
+  .contact-container {
+    .contact-container__box {
+      .contact-container__box-title {
+        font-size: 1.8*0.8 + rem;
+      }
+      .contact-container__box-content p {
+        font-size: 1.8*0.8 + rem;
+      }
+    }
+  }
+}
