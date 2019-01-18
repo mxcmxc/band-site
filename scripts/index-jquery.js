@@ -153,6 +153,14 @@ function postComment(event) {
     });
 }
 
+// `PUT /comments/:id/like`
+// Increments the like counter of the comment specified by `:id`
+
+
+
+
+
+
 $(document).ready(function () {
   loadComment();
 });
