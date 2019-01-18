@@ -86,6 +86,5 @@ loadShows();
 
 
 $(document).ready(function () {
-  createShowsElement()
   loadShows();
 });
