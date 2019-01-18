@@ -12,10 +12,6 @@ function createShowsElement(showsArray) {
     .addClass("shows-container-item")
     .appendTo('tbody');
 
-  // let $showsDatePlaceDiv = $("<div>")
-  //   .addClass("shows-container-item")
-  //   .appendTo($showsContainerItem);
-
   // Date
   $("<td>")
     .addClass("shows-container-item__date")
@@ -29,17 +25,17 @@ function createShowsElement(showsArray) {
     // append the new element to parent
     .appendTo($showsContainerItem);
   
-  // Show Location
+  // Location
   $("<td>")
     .addClass("shows-container-item__location")
     .text(showsArray.location)
     .appendTo($showsContainerItem);
     
-  // Show Button Cell
+  // Button Cell
   $("<td>")
     .addClass("shows-container-item__btn-cell")
     .append(
-      // Show Button
+        // Button
         $("<button>")
         .addClass("shows-container-item__btn")
         .text("GET TICKETS")
