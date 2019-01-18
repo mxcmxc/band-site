@@ -78,7 +78,7 @@ function loadShows() {
     renderNewShows(jsonData);
   })
   .catch(function(error) {
-    console.log(error);
+    throw Error (error.statusText);
   });
 }
 

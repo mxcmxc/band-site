@@ -68,12 +68,11 @@ function createCommentElement(commentArray) {
   let $newCommentFooter = $("<footer>")
     .addClass("new-comment-footer");
 
-  // Likes button and Likes using font awesome
+  // Likes button and Likes count using font awesome
   $("<i>")
     .addClass("fas")
     .addClass("fa-thumbs-up")
     .appendTo($newCommentFooter);
-  // count of likes
   $("<span>")
     .addClass("new-comment-footer__likesCount")
     .text(commentArray.likes)
@@ -94,8 +93,6 @@ function renderNewComment(commentArray) {
     $(".comments-post-container").prepend($newComment);
   }
 }
-
-// loadComment();
 
 //=============HTTP REQUESTS=============//
 
@@ -126,6 +123,7 @@ function postComment(event) {
    
     // create object to store new comments
     let commentObj;
+    // post disallowed if name or comment is not there
     if (!$nameValue || !$textareaValue) {
       commentObj = {};
     } else {
@@ -143,7 +141,7 @@ function postComment(event) {
       }
     };
     
-    let request = fetch("https://project-1-api.herokuapp.com/comments?api_key=%22b5f2afde-9940-4bec-b0da-de5d29f1c236%22", options)
+    let request = fetch(`https://project-1-api.herokuapp.com/comments?api_key=${COMMENTS_API_KEY}`, options)
     
     request.then(function(jsonData) {
       // push the new comment object into the comment array
@@ -151,7 +149,7 @@ function postComment(event) {
       loadComment();
     })
     .catch(function(error) {
-      console.log(error)
+      throw Error (error.statusText);
     });
 }
 
