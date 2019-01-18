@@ -99,6 +99,10 @@ p {
 }
 .shows-content-wrapper {
   padding-top: 2rem;
+  .shows-tbl-headers {
+    color: #fff;
+    font-size: 1.8rem;
+  }
   .shows-container-item {
     display: flex;
     justify-content: space-between;

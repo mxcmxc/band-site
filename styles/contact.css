@@ -1,0 +1,116 @@
+/*  CONTACT PAGE  */
+/*  Variables  */
+/*  Mixins */
+/*  General  */
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4 {
+  margin: 0;
+}
+
+body {
+  font-size: 62.5%;
+  font-family: "Poppins", sans-serif;
+}
+
+h1 {
+  font-size: 8.4rem;
+}
+
+h2 {
+  font-size: 6.4rem;
+}
+
+h3 {
+  font-size: 3.6rem;
+}
+
+h4 {
+  font-size: 2.4rem;
+}
+
+p {
+  font-size: 2.0rem;
+}
+
+#contact {
+  background-color: #272727;
+}
+
+.contact {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  margin: 0 auto;
+  padding: 4rem 0;
+  color: #fff;
+}
+
+.contact .contact-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 2rem;
+  word-wrap: break-word;
+}
+
+.contact .contact-container .contact-container__box {
+  width: 30%;
+}
+
+.contact .contact-container .contact-container__box-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+}
+
+.contact .contact-container .contact-container__box-content {
+  color: #D7D7D7;
+}
+
+.contact .contact-container .contact-container__box-content p {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.contact .contact-icon-bar {
+  width: 25%;
+  margin: 4rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.contact .contact-icon-bar .contact-icon-bar__item {
+  font-size: 1.8rem;
+}
+
+/*  MEDIA QUERIES  */
+@media (max-width: 768px) {
+  #contact .contact .contact__title {
+    font-size: 3.84rem;
+  }
+  #contact .contact .contact-container .contact-container__box .contact-container__box-title {
+    font-size: 1.17rem;
+  }
+  #contact .contact .contact-container .contact-container__box .contact-container__box-content p {
+    font-size: 1.08rem;
+  }
+  #contact .contact .contact-icon-bar a img {
+    width: 85%;
+  }
+}
+/*# sourceMappingURL=contact.css.map */
