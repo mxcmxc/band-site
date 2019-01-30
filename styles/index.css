@@ -350,6 +350,10 @@ p {
   font-size: 1.4rem;
 }
 
+#like-btn {
+  cursor: pointer;
+}
+
 .new-comment-footer__likesCount {
   margin-left: 2vw;
   font-size: 1.4rem;
