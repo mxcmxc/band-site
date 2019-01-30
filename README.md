@@ -1,7 +1,7 @@
 # Band-Site
 
 ## Introduction
-A band website built with HTML, CSS and jQuery with comments and showdates as API endpoints as a datasource.
+A band website built with HTML, CSS and jQuery with comments and showdates as API endpoints for the datasource. Utitilized HTTP methods `GET` `POST` `PUT` and `DELETE`.
 
 ## Installation
 - Find the `index.html` file and open with browser
@@ -115,9 +115,11 @@ A band website built with HTML, CSS and jQuery with comments and showdates as AP
 - `CSS`
 - `jQuery`
 - `SASS`
+ 
 
 ## Final Product
-<img src="README-images/image-results.png">
-<img src="README-images/video-results.png">
-<img src="README-images/play-video.png">
+<img src="README-images/cover.png">
+<img src="README-images/music.png">
+<img src="README-images/comments.png">
+<img src="README-images/shows.png">
 
