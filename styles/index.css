@@ -134,6 +134,10 @@ p {
 }
 
 /*  ABOUT PAGE  */
+#about {
+  min-height: 100vh;
+}
+
 .about {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -177,6 +181,7 @@ p {
 /*  MUSIC PAGE  */
 #music {
   background: #f9f9f9;
+  min-height: 100vh;
 }
 
 .music {
@@ -323,6 +328,7 @@ p {
   font-size: 1.8rem;
   font-weight: 600;
   color: #fff;
+  cursor: pointer;
 }
 
 .new-comment {
