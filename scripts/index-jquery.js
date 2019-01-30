@@ -56,6 +56,11 @@ function createCommentElement(commentArray) {
     .addClass("new-comment-header__timestamp")
     .text(postTime(commentArray.timestamp))
     .appendTo($newCommentHeader);
+  // Delete Button
+    $("<span>")
+    .addClass("fa")
+    .addClass("fa-trash")
+    .appendTo($newCommentHeader);
   
   // CREATE A COMMENT BODY
   // create variables to store DOM elements in comment body element
@@ -72,12 +77,10 @@ function createCommentElement(commentArray) {
   $("<span>")
     .addClass("fas")
     .addClass("fa-thumbs-up")
-    .attr("id", "like-btn")
     .appendTo($newCommentFooter);
   $("<span>")
     .addClass("new-comment-footer__likesCount")
     .text(commentArray.likes)
-    .attr("id", "likes-Counts")
     .appendTo($newCommentFooter);
 
   // APPEND POSTED COMMENT HEADER, BODY AND FOOTER TO PARENT DOM
@@ -159,15 +162,12 @@ function postComment(event) {
 // Increments the like counter of the comment specified by `:id`
 
 // add event listener to the likes button
-// $(document).on("click", "#like-btn", incrementLike);
-$(document).on("click", $('.fa-thumbs-up'), incrementLike);
-
+$(document).on("click", $(".fa-thumbs-up"), incrementLike);
 
 function incrementLike(event) {
+  let clickedLikeIndex = Array.from($(".fa-thumbs-up")).indexOf(event.target);
 
-  let clickedLikeIndex = Array.from($('.fa-thumbs-up')).indexOf(event.target);
-
-  let options = {
+  let putOptions = {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -179,14 +179,12 @@ function incrementLike(event) {
   getRequest.then(response => response.json())
     .then(jsonData => {      
       let existingIdsArray = jsonData.map((obj) => obj.id);
-      // let commentId = existingIdsArray[0]
-      let commentId = existingIdsArray[clickedLikeIndex]
+      let commentId = existingIdsArray[clickedLikeIndex] 
       
-      let putRequest = fetch(`https://project-1-api.herokuapp.com/comments/${commentId}/like?api_key=${COMMENTS_API_KEY}`, options)
+      let putRequest = fetch(`https://project-1-api.herokuapp.com/comments/${commentId}/like?api_key=${COMMENTS_API_KEY}`, putOptions)
   
       putRequest.then(response => response.json())
       .then(jsonData => {
-        console.log(jsonData)
         loadComment();
       })
   })
@@ -195,6 +193,40 @@ function incrementLike(event) {
   })
 }
 
+// DELETE /comments/:id
+// Deletes the comment specified by `:id`. 
+
+// add event listener to the likes button
+$(document).on("click", $(".fa-trash"), deleteComment);
+
+function deleteComment(event) {
+
+  let clickedDeleteIndex = Array.from($(".fa-trash")).indexOf(event.target);
+
+  let deleteOptions = {
+    method: "DELETE",
+    headers: {
+      "content-type": "application/json",
+    }
+  };
+
+  let getRequest = fetch(`https://project-1-api.herokuapp.com/comments/?api_key=${COMMENTS_API_KEY}`);
+
+  getRequest.then(response => response.json())
+    .then(jsonData => {      
+      let existingIdsArray = jsonData.map((obj) => obj.id);
+      let commentId = existingIdsArray[clickedDeleteIndex]
+      let deleteRequest = fetch(`https://project-1-api.herokuapp.com/comments/${commentId}/?api_key=${COMMENTS_API_KEY}`, deleteOptions)
+  
+      deleteRequest.then(response => response.json())
+      .then(jsonData => {
+        loadComment();
+      })
+    })
+    .catch(error => {
+      throw Error (error.statusText)
+    })
+  }
 
 $(document).ready(function () {
   loadComment();
