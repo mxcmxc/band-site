@@ -344,13 +344,21 @@ p {
   font-size: 1.4rem;
 }
 
+.fa-trash {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 2vw;
+  color: #A0A0A0;
+  font-size: 1.4rem;
+}
+
 .new-comment-footer {
   margin-top: 1vw;
   color: #A0A0A0;
   font-size: 1.4rem;
 }
 
-#like-btn {
+.fa-thumbs-up {
   cursor: pointer;
 }
 
