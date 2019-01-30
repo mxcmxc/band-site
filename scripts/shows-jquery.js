@@ -67,23 +67,19 @@ function renderNewShows(showsArray) {
 
 // GET /showdates GET request to fetch comments from API
 function loadShows() {
-  let request = fetch(`https://project-1-api.herokuapp.com/showdates?api_key=${SHOWS_API_KEY}`);
-
-  request.then(function(response) {
-    return response.json();
+  let url = `https://project-1-api.herokuapp.com/showdates?api_key=${SHOWS_API_KEY}`
+  fetch(url)
+    .then(response => response.json())
+    .then(jsonData => {
+      sortDates(jsonData);
+      renderNewShows(jsonData);
   })
-  .then(function(jsonData) {
-    console.log(jsonData)
-    sortDates(jsonData);
-    renderNewShows(jsonData);
-  })
-  .catch(function(error) {
+  .catch(error => {
     throw Error (error.statusText);
-  });
+  })
 }
 
 loadShows();
-
 
 $(document).ready(function () {
   loadShows();

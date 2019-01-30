@@ -69,13 +69,15 @@ function createCommentElement(commentArray) {
     .addClass("new-comment-footer");
 
   // Likes button and Likes count using font awesome
-  $("<i>")
+  $("<span>")
     .addClass("fas")
     .addClass("fa-thumbs-up")
+    .attr("id", "like-btn")
     .appendTo($newCommentFooter);
   $("<span>")
     .addClass("new-comment-footer__likesCount")
     .text(commentArray.likes)
+    .attr("id", "likes-Counts")
     .appendTo($newCommentFooter);
 
   // APPEND POSTED COMMENT HEADER, BODY AND FOOTER TO PARENT DOM
@@ -97,17 +99,17 @@ function renderNewComment(commentArray) {
 //=============HTTP REQUESTS=============//
 
 // GET /comments GET request to fetch comments from API
+
 function loadComment() {
-  let request = fetch(`https://project-1-api.herokuapp.com/comments?api_key=${COMMENTS_API_KEY}`);
-  request.then(function(response) {
-    return response.json();
-  })
-  .then(function(jsonData) {
-    renderNewComment(jsonData);
-  })
-  .catch(function(error) {
-    console.log(error);
-  });
+  let url = `https://project-1-api.herokuapp.com/comments?api_key=${COMMENTS_API_KEY}`;
+  fetch(url)
+    .then(response => response.json())
+    .then(jsonData => {
+      renderNewComment(jsonData);
+    })
+    .catch(error => {
+      throw Error (error.statusText)
+    })
 }
 
 // POST /comments POST request to post new comments to API
@@ -141,14 +143,14 @@ function postComment(event) {
       }
     };
     
-    let request = fetch(`https://project-1-api.herokuapp.com/comments?api_key=${COMMENTS_API_KEY}`, options)
+    let postRequest = fetch(`https://project-1-api.herokuapp.com/comments?api_key=${COMMENTS_API_KEY}`, options)
     
-    request.then(function(jsonData) {
+    postRequest.then(jsonData => {
       // push the new comment object into the comment array
       commentArray.push(commentObj);
       loadComment();
     })
-    .catch(function(error) {
+    .catch(error => {
       throw Error (error.statusText);
     });
 }
@@ -156,9 +158,37 @@ function postComment(event) {
 // `PUT /comments/:id/like`
 // Increments the like counter of the comment specified by `:id`
 
+// add event listener to the likes button
+$(document).on("click", "#like-btn", incrementLike);
 
+function incrementLike() {
 
+  let options = {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    }
+  };
 
+  let getRequest = fetch(`https://project-1-api.herokuapp.com/comments/?api_key=${COMMENTS_API_KEY}`);
+
+  getRequest.then(response => response.json())
+    .then(jsonData => {
+      let existingIdsArray = jsonData.map((obj) => obj.id);
+      let commentId = existingIdsArray[0]
+
+      let putRequest = fetch(`https://project-1-api.herokuapp.com/comments/${commentId}/like?api_key=${COMMENTS_API_KEY}`, options)
+  
+      putRequest.then(response => response.json())
+      .then(jsonData => {
+        console.log(jsonData)
+        loadComment();
+      })
+  })
+  .catch(error => {
+    throw Error (error.statusText)
+  })
+}
 
 
 $(document).ready(function () {

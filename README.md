@@ -1,13 +1,17 @@
 # Band-Site
 
 ## Introduction
-A band website built with HTML, CSS and jQuery with comments and band tour schedule API endpoints as a datasource.
+A band website built with HTML, CSS and jQuery with comments and showdates as API endpoints as a datasource.
 
 ## Installation
 - Find the `index.html` file and open with browser
 
-## API Endpoints 
+## API and Authentication 
 - this API has a temporary memory, as such it will sometimes forget all of it's comments (except for the two starter comments).
+- the comments array starts out with two comments in it already
+- URL: `https://project-1-api.herokuapp.com/`
+- you must append `?api_key=<your_api_key_here>` to each of your API requests
+- - you are free to choose whatever string you want for your API key (like your name)
 
 ### `GET /comments`
 - Returns an array of comments
