@@ -159,9 +159,13 @@ function postComment(event) {
 // Increments the like counter of the comment specified by `:id`
 
 // add event listener to the likes button
-$(document).on("click", "#like-btn", incrementLike);
+// $(document).on("click", "#like-btn", incrementLike);
+$(document).on("click", $('.fa-thumbs-up'), incrementLike);
 
-function incrementLike() {
+
+function incrementLike(event) {
+
+  let clickedLikeIndex = Array.from($('.fa-thumbs-up')).indexOf(event.target);
 
   let options = {
     method: "PUT",
@@ -173,10 +177,11 @@ function incrementLike() {
   let getRequest = fetch(`https://project-1-api.herokuapp.com/comments/?api_key=${COMMENTS_API_KEY}`);
 
   getRequest.then(response => response.json())
-    .then(jsonData => {
+    .then(jsonData => {      
       let existingIdsArray = jsonData.map((obj) => obj.id);
-      let commentId = existingIdsArray[0]
-
+      // let commentId = existingIdsArray[0]
+      let commentId = existingIdsArray[clickedLikeIndex]
+      
       let putRequest = fetch(`https://project-1-api.herokuapp.com/comments/${commentId}/like?api_key=${COMMENTS_API_KEY}`, options)
   
       putRequest.then(response => response.json())
